@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+        <title>Employees</title>
+    </head>
+    <body>
+        <div class="container">
+            <h4>Employee List</h4>
+            <div class="button-links">
+                <p th:text="'Hi ' + ${username}" />
+                <a href="/logout" class="button-link">Logout</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Email ID</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="employee: ${employees}">
+                        <td th:text="${employee.empId}"/>
+                        <td th:text="${employee.emailId}"/>
+                        <td><a th:href="@{/employees/{id}(id=${employee.empId})}">View details</a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
